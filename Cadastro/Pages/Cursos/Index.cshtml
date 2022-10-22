@@ -1,0 +1,64 @@
+@page
+@model Cadastro.Pages.Cursos.IndexModel;
+@{
+    ViewData["Title"] = "Lista de cursos";
+}
+ <!--TODO HTML-->
+<p class="text-center"> Lista de cursos</p>
+ 
+@if(Model.Mensagem != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+     @Model.Mensagem
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>Lista de cursos</h2>
+            </div>
+            <div class="col-sm-6">
+                <a asp-page="Criar" class="btn btn-primary">  Criar novo curso </a>
+            </div>
+        </div>
+         <div class="card-body">
+             <form method="post"> <!--Para que o post possa excluir-->
+            @if (Model.Cursos.Count() > 0)
+            {
+                <br /><br />
+                <table class="table table-striped border">
+                    <tr class="table-secundary">  <!--usando a lista e sua funcionalidade-->
+                        <th>@Html.DisplayNameFor(m=>m.Cursos.First().Id)</th>
+                        <th>@Html.DisplayNameFor(m=>m.Cursos.First().Nome)</th>
+                        <th>@Html.DisplayNameFor(m=>m.Cursos.First().QuantidadeAulas)</th>
+                        <th>@Html.DisplayNameFor(m=>m.Cursos.First().Preco)</th>
+                        <th>@Html.DisplayNameFor(m=>m.Cursos.First().DataCriacao)</th>
+                        <th>Opções</th>
+                    </tr>
+                    @foreach(var item in Model.Cursos)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(m=>item.Id)</td>
+                            <td>@Html.DisplayFor(m=>item.Nome)</td>
+                            <td>@Html.DisplayFor(m=>item.QuantidadeAulas)</td>
+                            <td>@Html.DisplayFor(m=>item.Preco)</td>
+                            <td>@Html.DisplayFor(m=>item.DataCriacao)</td>
+                            <td>
+                                <a asp-route-id="@item.Id" asp-page="Editar" class="btn-primary btn-success btn-sm">Editar</a>
+                                <button asp-page-handler="Deletar" asp-route-id="@item.Id" onclick="return confirm('Confirma a exclusão?')" class="btn-danger btn-sm">Deletar</button>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+            else
+            {
+                <p>Nenhum curso disponivel no momento</p>
+            }
+            </form>
+        </div>
+    </div>
+</div> 

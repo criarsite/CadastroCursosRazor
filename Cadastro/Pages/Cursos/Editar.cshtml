@@ -1,0 +1,71 @@
+@page
+@model Cadastro.Pages.Cursos.Editar
+@{
+        ViewData["Title"] = "Editar curso";
+}
+
+<!--TODO HTML-->
+<p class="text-center"> Lista de cursos</p>
+<div class="card">
+    <div class="card-header">
+        <h2 class="text-info"> Editar Curso</h2>
+    </div>
+    <div class="card-body">
+        <form method="post"> 
+            <div asp-validation-summary="ModelOnly" class="text-danger"> </div>
+
+          
+            <input type="hidden" asp-for="Curso.Id" /> 
+           
+            <div class="container" style="padding:30px"> 
+
+                <div class="form-group">
+                    <div class="row"> 
+                        <div class="col-sm-2">
+                            <label asp-for="Curso.Nome"> </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input asp-for="Curso.Nome" class="form-control"> </input>
+                        </div>
+                        <span asp-validation-for="Curso.Nome"class="text-danger">  </span>
+                    </div>
+                </div>
+
+            
+            <div class="form-group">
+                    <div class="row"> 
+                        <div class="col-sm-2">
+                            <label asp-for="Curso.QuantidadeAulas"> </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input asp-for="Curso.QuantidadeAulas" class="form-control"> </input>
+                        </div>
+                        <span asp-validation-for="Curso.QuantidadeAulas" class="text-danger">  </span>
+                    </div>
+             </div>
+             <div class="form-group">
+                    <div class="row"> 
+                        <div class="col-sm-2">
+                            <label asp-for="Curso.Preco"> </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input asp-for="Curso.Preco" class="form-control"> </input>
+                        </div>
+                        <span asp-validation-for="Curso.Preco" class="text-danger">  </span>
+                    </div>
+             </div>
+             <div class="form-group">
+                    <div class="row"> 
+                        <div class="col-sm-2 offset-sm-2">
+                             <input type="submit" value="Editar" class="btn btn-primary form-control"/>
+                        </div>
+                        <div class="col-sm-4">
+                            <a asp-page="Index" class="btn btn-success form-control ">Voltar a lista </a>
+                        </div>
+                     </div>
+             </div>
+          </div>
+        </form>
+    </div>
+   
+</div> 
